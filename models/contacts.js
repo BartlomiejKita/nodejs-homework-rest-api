@@ -52,7 +52,7 @@ const removeContact = async (contactId) => {
 const updateContact = async (contactId, body) => {
 	try {
 		const contacts = await listContacts();
-		const index = contacts.findIndex(({ id }) => id.toString() === contactId);
+		const index = contacts.findIndex(({ id }) => id === contactId);
 		if (index === -1) return;
 		contacts[index] = { ...contacts[index], ...body };
 		await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
