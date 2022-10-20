@@ -26,4 +26,24 @@ const schemaUpdateContact = Joi.object({
 		.optional(),
 }).min(1);
 
-module.exports = { schemaCreateContact, schemaUpdateContact };
+const validate = (schema, obj, next, res) => {
+	const { error } = schema.validate(obj);
+	if (error) {
+		const [{ message }] = error.details;
+		console.log(error);
+		return res.json({
+			status: "failure",
+			code: 400,
+			message: `Field ${message.replace(/"/g, "")}`,
+		});
+	}
+	next();
+};
+
+module.exports.createContact = (req, res, next) => {
+	return validate(schemaCreateContact, req.body, next, res);
+};
+
+module.exports.updateContact = (req, res, next) => {
+	return validate(schemaUpdateContact, req.body, next, res);
+};
