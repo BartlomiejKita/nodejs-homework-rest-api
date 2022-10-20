@@ -43,12 +43,13 @@ router.get("/:contactId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 	try {
-		const result = await schemaCreateContact.validate(req.body);
-		if (result.error) {
+		const { error } = await schemaCreateContact.validate(req.body);
+		if (error) {
+			const [{ message }] = error.details;
 			res.json({
 				status: "failure",
 				code: 400,
-				message: `missing required name field ${result.error}`,
+				message: `missing required name field: ${message.replace(/"/g, "")}`,
 			});
 		} else {
 			const newContact = await contactsActions.addContact(req.body);
@@ -87,12 +88,13 @@ router.delete("/:contactId", async (req, res, next) => {
 
 router.put("/:contactId", async (req, res, next) => {
 	try {
-		const result = await schemaUpdateContact.validate(req.body);
-		if (result.error) {
+		const { error } = await schemaUpdateContact.validate(req.body);
+		if (error) {
+			const [{ message }] = error.details;
 			res.json({
 				status: "failure",
 				code: 400,
-				message: `missing fields ${result.error}`,
+				message: `missing fields: ${message.replace(/"/g, "")}`,
 			});
 		} else {
 			const { contactId } = req.params;
