@@ -1,70 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const contactController = require("../controller/index")
+const contactController = require("../controller/index");
+const validate = require("../utilities/validation");
 
-router.get("/contacts", contactController.get)
-	
+router.get("/contacts", contactController.get);
+
 router.get("/contacts/:contactId", contactController.getOne);
 
+router.post("/contacts", validate.createContact, contactController.post);
 
+router.delete("/contacts/:contactId", contactController.deleteContact);
 
-// router.post("/", validate.createContact, async (req, res, next) => {
-// 	try {
-// 		const newContact = await contactsActions.addContact(req.body);
-// 		res.json({
-// 			status: "success",
-// 			code: 201,
-// 			data: { newContact },
-// 		});
-// 	} catch (error) {
-// 		console.log(error.message);
-// 	}
-// });
+router.put(
+	"/contacts/:contactId",
+	validate.updateContact,
+	contactController.put
+);
 
-// router.delete("/:contactId", async (req, res, next) => {
-// 	try {
-// 		const { contactId } = req.params;
-// 		const contact = await contactsActions.removeContact(contactId);
-// 		if (contact) {
-// 			res.json({
-// 				status: "success",
-// 				code: 200,
-// 				message: "Contact deleted",
-// 			});
-// 		} else {
-// 			res.json({
-// 				status: "failure",
-// 				code: 404,
-// 				message: "Not found",
-// 			});
-// 		}
-// 	} catch (error) {
-// 		console.log(error.message);
-// 	}
-// });
-
-// router.put("/:contactId", validate.updateContact, async (req, res, next) => {
-// 	try {
-// 		const { contactId } = req.params;
-// 		const contact = await contactsActions.updateContact(contactId, req.body);
-// 		if (contact) {
-// 			return res.json({
-// 				status: "success",
-// 				code: 200,
-// 				data: {
-// 					contact,
-// 				},
-// 			});
-// 		} else {
-// 			return res.status(404).json({
-// 				status: "failure",
-// 				code: 404,
-// 				message: "Not Found",
-// 			});
-// 		}
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// });
+router.patch(
+	"/contacts/:contactId/favorite",
+	validate.updateStatusContact,
+	contactController.patchFavorite
+);
 
 module.exports = router;
