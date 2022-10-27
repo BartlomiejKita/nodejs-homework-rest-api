@@ -1,9 +1,9 @@
-# HW 02
+# HW 03
 
 
 ## General info
 
-:boom:  REST API to work with a collection of contacts.
+:boom:   REST API to work with the contact collection.
 
 
 ## Technologies
@@ -15,10 +15,11 @@
 - EXPRESS.JS
 - Morgan
 - Joi
+- MongoDB/Mongoose
 
 
  
 ### Criteria
-[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-02/README.en.md )
+[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-03/README.en.md )
 
 
