@@ -8,5 +8,7 @@ router.post("/signup", validate.findUserByEmail, userController.register);
 router.post("/login", validate.findUserByEmail, userController.login);
 router.get("/logout", authMiddleware, userController.logout);
 router.get("/current", authMiddleware, userController.getCurrent);
+router.patch("/", authMiddleware, validate.patchSubscription, userController.patchSubscription);
+
 
 module.exports = router;

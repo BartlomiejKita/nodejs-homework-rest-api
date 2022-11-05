@@ -88,9 +88,31 @@ const getCurrent = async (req, res, next) => {
 	}
 };
 
+const patchSubscription = async (req, res, next) => {
+	const { id, email } = req.user;
+	const { subscription } = req.body;
+	await service.updateSubscription(id, subscription);
+	try {
+		res.json({
+			status: "success",
+			code: 200,
+			message: "Subscription has been changed",
+			user: {
+				email,
+				subscription,
+			},
+		});
+	} catch (error) {
+		next(error);
+	}
+};
+
 module.exports = {
 	register,
 	login,
 	logout,
 	getCurrent,
+	patchSubscription,
 };
+
+// ["starter", "pro", "business"];

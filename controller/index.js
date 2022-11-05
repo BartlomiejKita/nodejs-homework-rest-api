@@ -2,8 +2,9 @@ const service = require("../service/index");
 
 const get = async (req, res, next) => {
 	const { id } = req.user;
+	const { page = 1, limit = 20, favorite } = req.query;
 	try {
-		const contacts = await service.getAllContacts(id);
+		const contacts = await service.getAllContacts(id, page, limit, favorite);
 		res.json({
 			status: "success",
 			code: 200,

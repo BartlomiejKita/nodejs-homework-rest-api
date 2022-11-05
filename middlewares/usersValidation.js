@@ -10,6 +10,10 @@ const schemafindUserByEmail = Joi.object({
 	password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
 });
 
+const schemaPatchSubscription = Joi.object({
+	subscription: Joi.string().valid("starter", "pro", "business").required(),
+});
+
 const validate = (schema, obj, next, res) => {
 	const { error } = schema.validate(obj);
 	if (error) {
@@ -26,4 +30,8 @@ const validate = (schema, obj, next, res) => {
 
 module.exports.findUserByEmail = (req, res, next) => {
 	return validate(schemafindUserByEmail, req.body, next, res);
+};
+
+module.exports.patchSubscription = (req, res, next) => {
+	return validate(schemaPatchSubscription, req.body, next, res);
 };

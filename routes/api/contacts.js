@@ -8,7 +8,12 @@ router.get("/", authMiddleware, contactController.get);
 
 router.get("/:contactId", contactController.getOne);
 
-router.post("/", validate.createContact, contactController.post);
+router.post(
+	"/",
+	authMiddleware,
+	validate.createContact,
+	contactController.post
+);
 
 router.delete("/:contactId", contactController.deleteContact);
 

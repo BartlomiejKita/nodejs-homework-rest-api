@@ -20,12 +20,14 @@ const passwordValidation = async (email, password) => {
 	}
 };
 
-const addToken = async (id, token) => await User.findByIdAndUpdate(id, { token });
+const addToken = async (id, token) =>
+	await User.findByIdAndUpdate(id, { token });
 
 const userLogout = async (id) =>
 	await User.findByIdAndUpdate(id, { token: null });
 
-	
+const updateSubscription = async (id, body) =>
+	User.findByIdAndUpdate(id, { subscription: body }, { new: true });
 
 module.exports = {
 	findUserByEmail,
@@ -33,4 +35,5 @@ module.exports = {
 	passwordValidation,
 	addToken,
 	userLogout,
+	updateSubscription,
 };
