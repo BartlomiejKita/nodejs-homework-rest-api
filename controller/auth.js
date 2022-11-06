@@ -114,5 +114,3 @@ module.exports = {
 	getCurrent,
 	patchSubscription,
 };
-
-// ["starter", "pro", "business"];
