@@ -41,7 +41,7 @@ const login = async (req, res, next) => {
 				message: "Email or password is wrong",
 			});
 		}
-		const {id,email,subscrption} = user;
+		const { id, subscription } = user;
 		const payload = {
 			id,
 			email,
