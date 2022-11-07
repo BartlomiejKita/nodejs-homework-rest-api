@@ -12,7 +12,7 @@ const createNewUser = async (body) => {
 
 const passwordValidation = async (email, password) => {
 	const user = await findUserByEmail(email);
-	return user ? await user.validatePassword(password) : null;
+	return user ? await user.validatePassword(password) : false;
 };
 
 const addToken = async (id, token) =>
