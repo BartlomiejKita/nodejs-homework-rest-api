@@ -1,9 +1,9 @@
-# HW 03
+# HW 04
 
 
 ## General info
 
-:boom:   REST API to work with the contact collection.
+:boom:   REST API to work with the contact and user collection.
 
 
 ## Technologies
@@ -16,10 +16,13 @@
 - Morgan
 - Joi
 - MongoDB/Mongoose
+- bcrypt
+- jsonwebtoken
+- passport
 
 
  
 ### Criteria
-[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-03/README.en.md )
+[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-04/README.en.md )
 
 
