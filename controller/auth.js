@@ -41,20 +41,21 @@ const login = async (req, res, next) => {
 				message: "Email or password is wrong",
 			});
 		}
+		const {id,email,subscrption} = user;
 		const payload = {
-			id: user.id,
-			email: user.email,
+			id,
+			email,
 		};
 
 		const token = jwt.sign(payload, secret, { expiresIn: "12h" });
-		await service.addToken(user.id, token);
+		await service.addToken(id, token);
 		res.status(200).json({
 			status: "ok",
 			code: 200,
-			token: token,
+			token,
 			user: {
-				email: user.email,
-				subscription: user.subscription,
+				email,
+				subscription,
 			},
 		});
 	} catch (error) {
