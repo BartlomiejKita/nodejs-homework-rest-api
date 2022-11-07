@@ -12,12 +12,7 @@ const createNewUser = async (body) => {
 
 const passwordValidation = async (email, password) => {
 	const user = await findUserByEmail(email);
-	if (user) {
-		const isPasswordCorrect = await user.validatePassword(password);
-		return isPasswordCorrect;
-	} else {
-		return null;
-	}
+	return user ? await user.validatePassword(password) : null;
 };
 
 const addToken = async (id, token) =>
