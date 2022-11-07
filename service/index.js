@@ -9,7 +9,7 @@ const getAllContacts = async (id, page, limit, favorite) => {
 			.limit(limit * 1)
 			.skip((page - 1) * limit);
 	}
-	return await Contact.find({ owner: id, favorite: favorite })
+	return await Contact.find({ owner: id, favorite })
 		.limit(limit * 1)
 		.skip((page - 1) * limit);
 };
