@@ -1,4 +1,4 @@
-# HW 04
+# HW 05
 
 
 ## General info
@@ -19,10 +19,14 @@
 - bcrypt
 - jsonwebtoken
 - passport
+- multer
+- jimp
+- gravatar
+- jest/supertest
 
 
  
 ### Criteria
-[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-04/README.en.md )
+[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-05/README.en.md )
 
 
