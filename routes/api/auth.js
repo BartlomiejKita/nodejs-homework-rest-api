@@ -45,5 +45,11 @@ router.patch(
 	multerInstance.single("avatar"),
 	userController.patchAvatar
 );
+router.get("/verify/:verificationToken", userController.verifyEmail);
+router.post(
+	"/verify",
+	validate.verifyEmail,
+	userController.resendVerificationEmail
+);
 
 module.exports = router;
