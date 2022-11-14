@@ -1,4 +1,4 @@
-# HW 05
+# HW 06
 
 
 ## General info
@@ -23,10 +23,12 @@
 - jimp
 - gravatar
 - jest/supertest
+- SendGrid API
+- 
 
 
  
 ### Criteria
-[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-05/README.en.md )
+[criteria](https://github.com/goitacademy/nodejs-homework/blob/master/homework-06/README.en.md)
 
 
