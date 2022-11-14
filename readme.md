@@ -24,7 +24,6 @@
 - gravatar
 - jest/supertest
 - SendGrid API
-- 
 
 
  
